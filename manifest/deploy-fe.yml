@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-erick-flores-deployment
+  namespace: erick-flores-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-erick-flores-deployment
+  template:
+    metadata:
+      labels:
+        app: frontend-erick-flores-deployment
+    spec:
+      containers:
+      - name: frontend
+        image: erickjunior/frontend:latest
+        ports:
+        - containerPort: 8085
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
